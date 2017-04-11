@@ -1,0 +1,9 @@
+grep -i for test.txt
+grep '(' test.txt
+grep '^[i]=0;$' test.txt
+grep '^[i]<10;$' test.txt
+grep i++ test.txt
+grep ')' test.txt
+grep '{' test.txt
+grep '^sum+=i$' test.txt
+grep '}' test.txt
