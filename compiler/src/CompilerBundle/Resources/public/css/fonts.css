@@ -1,0 +1,31 @@
+@font-face {
+    font-family: 'Arimo';
+    src: local('Arimo'), url('fonts/arimo.woff2') format('woff2'), url('fonts/arimo.woff') format('woff'), url('fonts/arimo.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Guerilla';
+    src: local('GUERRILLA Normal'), local('GUERRILLA-Normal'), url('fonts/Guerrillanormal.woff2') format('woff2'), url('fonts/Guerrillanormal.woff') format('woff'), url('fonts/Guerrillanormal.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Junegull';
+    src: local('Junegull-Regular'), url('fonts/junegull-regular.woff2') format('woff2'), url('fonts/junegull-regular.woff') format('woff'), url('fonts/junegull-regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+/* font-family: "RobotoRegular"; */
+@font-face {
+	font-family: "RobotoRegular";
+	src: url("../fonts/RobotoRegular/RobotoRegular.eot");
+	src: url("../fonts/RobotoRegular/RobotoRegular.eot?#iefix")format("embedded-opentype"),
+	url("../fonts/RobotoRegular/RobotoRegular.woff") format("woff"),
+	url("../fonts/RobotoRegular/RobotoRegular.ttf") format("truetype");
+	font-style: normal;
+	font-weight: normal;
+}

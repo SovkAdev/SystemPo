@@ -1,0 +1,14 @@
+{% if tokens is defined %}
+    <div class='clearfix'>
+        {% for token in tokens %}
+            <div class='col-xs-4 bottom-mg-20'>
+                <h5 class='text-bold text-center' style='font-size: 18px;'>Токен №{{token.id}}</h5>
+                <hr>
+                <ul style='list-style-position: inside'>
+                    <li class='lexer-text'>Значение: {{token.value}}</li>
+                    <li class='lexer-text'>Тег: {{token.tag}}</li>
+                </ul>
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}

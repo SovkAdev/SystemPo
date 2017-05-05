@@ -1,0 +1,117 @@
+<script>
+    var Lexer = {
+        /*
+         * Существующие теги
+         */
+
+        NUM: 0, ID: 1, IF: 2, ELSE: 3, WHILE: 4, DO: 5, LBRA: 6, RBRA: 7, LPAR: 8,
+        RPAR: 9, PLUS: 10, MINUS: 11, LESS: 12, EQUAL: 13, SEMICOLON: 14,
+        /*
+         * Сопостовление единичных лексем тегам
+         */
+        SYMBOLS: {
+            '{': 6, '}': 7, '=': 13, ';': 14, '(': 8,
+            ')': 9, '+': 10, '-': 11, '<': 12
+        },
+        /*
+         * Сопоставление логических операторов тегам
+         */
+        WORDS: {'if': 2, 'else': 3, 'do': 5, 'while': 4},
+        /*
+         * Изначальные значения токена
+         */
+        value: null, tag: null, ch: ' ', exp: '',
+        /*
+         * Методы класса
+         */
+        error: function (msg) {
+            console.log('Lexer error: ' + msg);
+            return false;
+        },
+        getExp: function (expression) {
+            this.exp = expression;
+        },
+        getc: function () {
+            if (this.exp.charAt(0)) {
+                this.ch = this.exp.charAt(0);
+                this.exp = this.exp.substring(1);
+            } else {
+                this.ch = 'EOF';
+            }
+        },
+        isNumeric: function () {
+            if (this.ch === 'EOF') {
+                return false;
+            }
+            if (this.ch.search(/^[0-9]$/i) !== -1) {
+                return true;
+            } else {
+                return false;
+            }
+        },
+        isAlpha: function () {
+            if (this.ch === 'EOF') {
+                return false;
+            }
+            if (this.ch.search(/^[a-z]$/i) !== -1) {
+                return true;
+            } else {
+                return false;
+            }
+        },
+        ressurection: function () {
+            if (this.ch !== 'EOF') {
+                this.exp = this.ch + this.exp;
+            }
+        },
+        get_token: function (tokens) {
+            while (this.tag === null) {
+                if (this.ch === ' ') {
+                    this.getc();
+                } else if (this.SYMBOLS[this.ch]) {
+                    this.value = this.ch;
+                    this.tag = this.SYMBOLS[this.ch];
+                } else if (this.isNumeric()) {
+                    var intval = 0;
+                    while (this.isNumeric()) {
+                        intval = intval * 10 + parseInt(this.ch);
+                        this.getc();
+                    }
+                    this.ressurection();
+                    this.value = intval;
+                    this.tag = this.NUM;
+                } else if (this.isAlpha()) {
+                    var ident = '';
+
+                    while (this.isAlpha()) {
+                        ident = ident + this.ch.toLowerCase();
+                        this.getc();
+                    }
+                    this.ressurection();
+                    if (this.WORDS[ident]) {
+                        this.value = ident;
+                        this.tag = this.WORDS[ident];
+                    } else if (ident.length === 1) {
+                        this.value = ident.charCodeAt(0) - 'a'.charCodeAt(0);
+                        this.tag = this.ID;
+                    } else {
+                        this.error('Unknown identifier: ' + ident);
+                        this.tag = -1;
+                        this.value = ident;
+                    }
+                } else {
+                    this.error('Unexpected symbol: ' + this.ch);
+                    this.tag = -2;
+                    this.value = this.ch;
+                }
+            }
+            var token = {"value": this.value, "tag": this.tag};
+            tokens.push(token);
+
+            this.value = null;
+            this.tag = null;
+            this.ch = ' ';
+        }
+
+    };
+</script>

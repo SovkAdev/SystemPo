@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]><html lang="ru" class="lt-ie9 lt-ie8 lt-ie7"><![endif]-->
+<!--[if IE 7]><html lang="ru" class="lt-ie9 lt-ie8"><![endif]-->
+<!--[if IE 8]><html lang="ru" class="lt-ie9"><![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="ru">
+    <!--<![endif]-->
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+
+        <link href="{{ asset ('bundles/Compiler/css/font-awesome.min.css') }}" rel="stylesheet">
+        <link href="{{ asset ('bundles/Compiler/css/fonts.css') }}" rel="stylesheet">
+        <link href="{{ asset ('bundles/Compiler/css/bootstrap.min.css') }}" rel="stylesheet">    
+        <link href="{{ asset ('bundles/Compiler/css/bootstrap-theme.min.css') }}" rel="stylesheet">
+        <link href="{{ asset ('bundles/Compiler/css/bootstrap-datepicker3.min.css') }}" rel="stylesheet">
+        <link href="{{ asset ('bundles/Compiler/css/bootstrap-select.min.css') }}" rel="stylesheet">
+        <link href="{{ asset ('bundles/Compiler/css/general.css') }}" rel="stylesheet">
+        <link href="{{ asset ('bundles/Compiler/css/media.css') }}" rel="stylesheet">
+        <link href="{{ asset ('bundles/Compiler/css/fonts.css') }}" rel="stylesheet">
+
+
+    </head>
+    <body>
+        <div class="wrap">
+            {% include "::header.html.twig" %}    
+            {% block content %}
+            {% endblock %}
+            <div class="push"></div> 
+        </div>
+        {% include "::footer.html.twig" %}    
+        
+        <div id="message" class="modal fade" >
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button  type="button" class="close" data-dismiss="modal">&times;</button>
+                        <span class='leader-name' style="margin-bottom: 0">{{ 'global.notification'|trans }}</span>
+                    </div>
+                    <div id="for-message" class="modal-body">
+                        <span class="standart-text"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--[if lt IE 9]>
+        <script src="libs/html5shiv/es5-shim.min.js"></script>
+        <script src="libs/html5shiv/html5shiv.min.js"></script>
+        <script src="libs/html5shiv/html5shiv-printshiv.min.js"></script>
+        <script src="libs/respond/respond.min.js"></script>
+        <![endif]-->
+        <script src="{{ asset ('bundles/Compiler/js/jquery-3.1.1.min.js') }}"></script>
+        <script src="{{ asset ('bundles/Compiler/js/bootstrap.min.js') }}"></script>
+        <script src="{{ asset ('bundles/Compiler/js/bootstrap-select.min.js') }}"></script>
+        <script src="{{ asset ('bundles/Compiler/js/bootstrap.file-input.js') }}"></script>
+        <script src="{{ asset ('bundles/Compiler/js/bootstrap-datepicker.min.js') }}"></script>
+        <script src="{{ asset ('bundles/Compiler/js/general.js') }}"></script>
+
+        {% block scripts %}
+        {% endblock %}
+    </body>
+</html>

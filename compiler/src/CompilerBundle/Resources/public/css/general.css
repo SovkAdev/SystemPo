@@ -1,0 +1,132 @@
+*{
+    margin: 0;
+    padding: 0;
+    outline: none;
+}
+
+body{
+    background: #f7f7f7;
+    font-family: 'RobotoRegular';
+}
+
+
+html, body {
+    height: 100%;
+    background-color: black;
+    background-image: url(../files/back.png);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    /* The html and body elements cannot have any padding or margin. */
+}
+
+/* Wrapper for page content to push down footer */
+.wrap {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    /* Negative indent footer by it's height */
+    margin: 0 auto -62px;
+}
+
+/* Set the fixed height of the footer here */
+.push,
+.footer {
+    height: 62px;
+}
+
+.top-mg-0{
+    margin-top: 0px;
+}
+.top-mg-5{
+    margin-top: 5px;
+}
+.top-mg-10{
+    margin-top:10px;
+}
+.top-mg-15{
+    margin-top:15px;
+}
+.top-mg-20{
+    margin-top:20px;
+}
+.top-mg-25{
+    margin-top: 25px;
+}
+.top-mg-30{
+    margin-top: 30px;
+}
+.top-mg-40{
+    margin-top:40px;
+}
+.top-mg-50{
+    margin-top:50px;
+}
+.top-mg-90{
+    margin-top: 90px;
+}
+.top-mg-100{
+    margin-top: 100px;
+}
+.bottom-mg-0{
+    margin-bottom: 0px;
+}
+.bottom-mg-10{
+    margin-bottom: 10px;
+}
+.bottom-mg-15{
+    margin-bottom: 15px;
+}
+.bottom-mg-20{
+    margin-bottom: 20px;
+}
+.bottom-mg-30{
+    margin-bottom: 30px;
+}
+.bottom-mg-40{
+    margin-bottom: 40px;
+}
+.right-mg-0{
+    margin-right: 0px;
+}
+.right-mg-5{
+    margin-right: 5px;
+}
+.right-mg-10{
+    margin-right:10px;
+}
+
+h2{
+    color: #4d545a;
+    text-shadow: 0px 0px 11px rgba(255, 255, 255, 1);
+}
+h1{
+    color: #86919a;
+    text-shadow: 0px 0px 11px rgba(255, 255, 255, 1);
+}
+
+h5{
+    color: #c4cfd8;
+}
+.lexer{
+    background: rgba(93, 189, 206, 0.48);
+    border-radius: 15px;
+    -webkit-box-shadow: 0px 0px 50px 0px rgba(255,255,255,0.8);
+    -moz-box-shadow: 0px 0px 50px 0px rgba(255,255,255,0.8);
+    box-shadow: 0px 0px 50px 0px rgba(255,255,255,0.8);
+}
+
+.lexer-content{
+    width: 900px;
+    margin: 0 auto;
+    background-color: rgba(0, 0, 0, 0.5);
+
+}
+
+.lexer-text{
+    color: #c4cfd8;
+    font-size: 16px;
+}
+#anchor{
+    height: auto;
+}

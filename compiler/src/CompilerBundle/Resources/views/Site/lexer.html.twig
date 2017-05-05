@@ -1,0 +1,50 @@
+{% extends '::base.html.twig' %}
+
+
+{% block content %}
+    <div class="container bottom-mg-40 top-mg-100">
+        <div class='lexer-content'>
+            <input id='expression' type='text' class='form-control bottom-mg-20' placeholder='Введите выражение!'>
+            <div id='anchor'></div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    {% include('CompilerBundle:scripts:script.lexer.html.twig') %} 
+    <script>
+        $(document).ready(function () {
+            $('#expression').on('input', function () {
+                var expression = $(this).val();
+                if (expression.length === 0) {
+                    $('#anchor').empty();
+                    return false;
+                } else {
+                    var tokens = [];
+                    Lexer.getExp(expression);
+                    while (Lexer.exp !== '') {
+                        Lexer.get_token(tokens);
+                    }
+                    $.ajax({
+                        type: "POST",
+                        contentType: "application/json",
+                        url: "{{path('compiler_lexer_ajax')}}",
+                        data: JSON.stringify(tokens), // convert array to JSON
+                        dataType: 'html',
+                        cache: false,
+                        timeout: 100000,
+                        success: function (data) {
+                            $('#anchor').empty();
+                            $('#anchor').append(data);
+                        },
+                        error: function (e) {
+                            console.log("ERROR : ", e);
+
+                        }
+                    });
+                }
+                return false;
+            });
+        });
+    </script>
+{% endblock %}

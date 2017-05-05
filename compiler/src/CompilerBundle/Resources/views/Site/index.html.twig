@@ -1,0 +1,54 @@
+{% extends '::base.html.twig' %}
+
+
+{% block content %}
+    <div class="container bottom-mg-40 top-mg-90">
+        <div class="row">
+            <div class="col-xs-3 text-center">
+                <h2>Лексер</h2>
+                <div class="lexer">
+                    <a class='top' href="{{ path('compiler_lexer') }}"><img class='door' style="border-radius: 15px;" width="100%" src="{{ asset ('bundles/Compiler/files/Door1.jpg') }}" alt="Door1"></a>
+                </div>
+            </div>
+            <div class="col-xs-3 text-center">
+                <h2>Парсер</h2>
+                <div class="lexer">
+                    <a href="#"><img class='door' style="border-radius: 15px;" width="100%" src="{{ asset ('bundles/Compiler/files/Door2.jpg') }}" alt="Door2"></a>
+                </div>
+            </div>
+            <div class="col-xs-3 text-center">
+                <h2>Интерпритатор</h2>
+                <div class="lexer">
+                    <a href="#"><img class='door' style="border-radius: 15px;" width="100%" src="{{ asset ('bundles/Compiler/files/Door3.png') }}" alt="Door3"></a>
+                </div>
+            </div>
+            <div class="col-xs-3 text-center">
+                <h2>Компилятор</h2>
+                <div class="lexer">
+                    <a href="#"><img class='door' style="border-radius: 15px;" width="100%" src="{{ asset ('bundles/Compiler/files/Door4.jpg') }}" alt="Door1"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.door').mouseenter(function () {
+                $(this).parent().parent().css({
+                    'box-shadow': '0px 0px 100px 0px rgba(255,255,255,1)',
+                    '-moz-box-shadow': '0px 0px 100px 0px rgba(255,255,255,1)',
+                    '-webkit-box-shadow': '0px 0px 100px 0px rgba(255,255,255,1)'
+                });
+                $('.door').mouseout(function () {
+                    $(this).parent().parent().css({
+                        'box-shadow': '0px 0px 50px 0px rgba(255,255,255,0.8)',
+                        '-moz-box-shadow': '0px 0px 50px 0px rgba(255,255,255,0.8)',
+                        '-webkit-box-shadow': '0px 0px 50px 0px rgba(255,255,255,0.8)'
+                    });
+                });
+            });
+        });
+    </script>
+{% endblock %}
