@@ -14,4 +14,8 @@ class MainController extends Controller {
         return $this->render('CompilerBundle:Site:lexer.html.twig');
     }
 
+    public function parserAction() {
+        return $this->render('CompilerBundle:Site:parser.html.twig');
+    }
+
 }

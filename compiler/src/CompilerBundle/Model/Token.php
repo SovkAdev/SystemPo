@@ -39,6 +39,8 @@ class Token {
 
     function setTag($tag) {
         switch ($tag) {
+            case -3: $this->tag = "EOF";
+                break;
             case -2: $this->tag = 'Unexpected symbol - ' . $this->value;
                 break;
             case -1: $this->tag = 'Unknown identifier - ' . $this->value;
