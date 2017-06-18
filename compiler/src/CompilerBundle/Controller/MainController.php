@@ -17,5 +17,9 @@ class MainController extends Controller {
     public function parserAction() {
         return $this->render('CompilerBundle:Site:parser.html.twig');
     }
+    
+    public function compilerAction() {
+        return $this->render('CompilerBundle:Site:compiler.html.twig');
+    }
 
 }

@@ -1,0 +1,66 @@
+{% extends '::base.html.twig' %}
+
+
+{% block content %}
+    <div class="container bottom-mg-40 top-mg-100">
+        <div class='lexer-content'>
+            <div class="input-group">
+                <input id='expression' type='text' class='form-control bottom-mg-20' placeholder='Введите выражение!'>
+                <span class="input-group-btn">
+                    <button id="parse" class="btn btn-primary" type="button">Compile it!</button>
+                </span>
+            </div>
+            <div id='anchor'></div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    {% include('CompilerBundle:scripts:script.lexer.html.twig') %} 
+    <script>
+        $(document).ready(function () {
+            $('#expression').focus();
+            $('#parse').on('click', function () {
+                
+                var input = $('#expression');
+                input.prop('disabled', true);
+                var expression = input.val();
+                if (expression.length === 0) {
+                    $('#anchor').empty();
+                    input.prop('disabled', false);
+                    input.focus();
+                    return false;
+                } else {
+                    var tokens = [];
+                    Lexer.getExp(expression);
+                    while (Lexer.exp !== '') {
+                        Lexer.get_token(tokens);
+                    }
+                    $.ajax({
+                        type: "POST",
+                        contentType: "application/json",
+                        url: "{{path('compiler_compiler_ajax')}}",
+                        data: JSON.stringify(tokens), // convert array to JSON
+                        dataType: 'html',
+                        cache: false,
+                        timeout: 10000,
+                        success: function (data) {
+                            $('#anchor').empty();
+                            $('#anchor').append(data);
+                            input.prop('disabled', false);
+                            input.focus();
+                        },
+                        error: function (e) {
+                            console.log("ERROR : ", e);
+                            $('#anchor').empty();
+                            $('#anchor').append('<h3 class="text-center bottom-mg-20" style="color:white">Ошибка!</h3>');
+                            input.prop('disabled', false);
+                            input.focus();
+                        }
+                    });
+                }
+                return false;
+            });
+        });
+    </script>
+{% endblock %}

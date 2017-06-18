@@ -18,3 +18,11 @@ compiler_parser:
 compiler_parser_ajax:
     path: /parser_get_data
     defaults: {_controller: CompilerBundle:Ajax:parserGetData }
+    
+compiler_compiler:
+    path: /compier
+    defaults: {_controller: CompilerBundle:Main:compiler}
+
+compiler_compiler_ajax:
+     path: /compiler_get_data
+     defaults: {_controller: CompilerBundle:Ajax:compilerGetData}
